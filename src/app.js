@@ -18,7 +18,8 @@ const app = express();
 app.use(cors({
     origin: [
         "http://localhost:4200",
-        "http://localhost:3000"
+        "http://localhost:3000",
+        "https://frabjous-blini-973dce.netlify.app"
     ],
     credentials: true
 }));
