@@ -15,7 +15,13 @@ const attendanceRoute = require("./routes/attendance.routes");
 
 const app = express();
 
-app.use(cors({ origin: "http://localhost:4200", credentials: true }));
+app.use(cors({
+    origin: [
+        "http://localhost:4200",
+        "http://localhost:3000"
+    ],
+    credentials: true
+}));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
