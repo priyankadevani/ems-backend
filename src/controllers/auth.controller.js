@@ -23,14 +23,14 @@ const loginUser = async (req, res, next) => {
         const { token, refToken, user } = await loginService(req.body);
         res.cookie("accessToken", token, {
             httpOnly: true,
-            secure: false,
-            sameSite: "lax",
+            secure: true,
+            sameSite: "none",
             maxAge: 10 * 60 * 1000
         });
         res.cookie("refreshToken", refToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "lax",
+            secure: true,
+            sameSite: "none",
             maxAge: 30 * 60 * 1000
         })
         const employee = await Employee.findOne({ userId: user._id });
@@ -107,14 +107,14 @@ const refreshToken = async (req, res, next) => {
         const { accessToken, refreshToken, user } = await refreshTokenService(req);
         res.cookie("accessToken", accessToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "lax",
+            secure: true,
+            sameSite: "none",
             maxAge: 10 * 60 * 1000
         });
         res.cookie("refreshToken", refreshToken, {
             httpOnly: true,
-            secure: false,
-            sameSite: "lax",
+            secure: true,
+            sameSite: "none",
             maxAge: 30 * 60 * 1000
         })
         // console.log("sending refresh response    ", user.email);
